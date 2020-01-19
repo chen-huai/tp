@@ -26,7 +26,7 @@ class Index extends Controller
         $user = new User();
         $result = $user->where('name', $data['name'])->find();
         if ($result) {
-            if ($result['password'] === md5($data['password'])) {
+            if ($result['password'] === md5(md5($data['password']))) {
                 session('name', $data['name']);
             } else {
                 $this->error('密码错误');
