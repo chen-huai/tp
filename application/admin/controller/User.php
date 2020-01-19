@@ -31,7 +31,7 @@ class User extends Base
         return $this->fetch();*/
 
         //分页显示数据
-        $data = UserModel::paginate(3);
+        $data = UserModel::paginate(4);
         $page = $data->render();
         $this->assign('data', $data);
         $this->assign('page', $page);
