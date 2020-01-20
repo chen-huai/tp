@@ -74,9 +74,9 @@ class User extends Base
         //dump($ret)
         //die
         if ($ret) {
-            $this->success('新增管理员成功', 'User/userList');
+            $this->success('新增用户成功', 'User/userList');
         } else {
-            $this->error('新增管理员失败');
+            $this->error('新增用户失败');
         }
     }
 
