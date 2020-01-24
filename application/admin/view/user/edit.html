@@ -25,7 +25,23 @@
     <div class="form-group">
         <label for="email" class="col-sm-2 control-label">邮箱</label>
         <div class="col-sm-3">
-            <input type="email" class="form-control" id="email" placeholder="邮箱" name="email" value="{$data.email}">
+            <input type="email" class="form-control" id="email" placeholder="邮箱" name="email[]" value="{$data.email}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="email" class="col-sm-2 control-label">权限</label>
+        <div class="col-sm-3">
+            {foreach name="ruleData" item="v" key="k"}
+            <input type="checkbox" name="ruleId[]" value="{$k}" > {$k}.{$v}
+            {/foreach}
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="email" class="col-sm-2 control-label">客户</label>
+        <div class="col-sm-3">
+            {foreach name="clientData" item="v" key="k"}
+            <input type="checkbox" name="clientId[]" value="{$k}" > {$k}.{$v}
+            {/foreach}
         </div>
     </div>
 

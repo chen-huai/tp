@@ -1,13 +1,11 @@
 <?php
-
-
 namespace app\admin\controller;
 use think\Controller;
 use app\admin\controller\Base;
-use app\admin\model\Client as UserModel;
-use app\admin\validate\Client as UserValidate;
+use app\admin\model\Rule as UserModel;
+use app\admin\validate\Rule as UserValidate;
 
-class Client extends Base
+class Rule extends Base
 {
     public function index()
     {
@@ -66,9 +64,9 @@ class Client extends Base
         //dump($ret)
         //die
         if ($ret) {
-            $this->success('新增客户成功', 'Client/userList');
+            $this->success('新增权限成功', 'Rule/userList');
         } else {
-            $this->error('新增客户失败');
+            $this->error('新增权限失败');
         }
     }
 
@@ -85,9 +83,9 @@ class Client extends Base
         $user = new UserModel();
         $ret = $user->allowField(true)->save($data, ['id' => $id]);
         if ($ret) {
-            $this->success('修改客户信息成功', 'Client/userlist');
+            $this->success('修改权限信息成功', 'Rule/userlist');
         } else {
-            $this->error('修改客户信息失败');
+            $this->error('修改权限信息失败');
         }
     }
 
@@ -99,9 +97,9 @@ class Client extends Base
         $id = input('get.id');
         $ret = UserModel::destroy($id);
         if ($ret) {
-            $this->success('删除客户成功', 'Client/userlist');
+            $this->success('删除权限成功', 'Rule/userlist');
         } else {
-            $this->error('删除客户失败');
+            $this->error('删除权限失败');
         }
 
         //实现真实删除的方法
@@ -114,4 +112,5 @@ class Client extends Base
             $this->error('删除用户失败');
         }*/
     }
+
 }

@@ -15,7 +15,7 @@ use think\Validate;
 class User extends Validate
 {
     protected $rule = [
-        'name|用户名' => 'require|min:3',
+        'name|用户名' => 'require|min:1',
         'password|密码' => 'require|min:6|confirm:repassword',
         'email|邮箱' => 'require',
     ];
