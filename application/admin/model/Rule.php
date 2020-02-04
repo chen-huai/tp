@@ -11,7 +11,7 @@ class Rule extends Model
     use SoftDelete;
     protected static $deleteTime = 'delete_time';
     //自动完成字段
-    protected $auto = ['ip', 'password', 'repassword'];
+    protected $auto = ['ip'];
 
     protected function setIpAttr()
     {
