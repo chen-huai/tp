@@ -1,12 +1,8 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: pan 潘宏远
- * Date: 2018/8/18
- * Time: 11:07
- * email: i@panhongyuan.com
+ * User: Frank
+ * Date: 2020/02/10
  */
-
 namespace app\admin\controller;
 
 use think\Controller;
