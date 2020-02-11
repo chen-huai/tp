@@ -1,10 +1,7 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: pan 潘宏远
- * Date: 2018/8/19
- * Time: 14:59
- * email: i@panhongyuan.com
+ * User: Frank
+ * Date: 2020/02/10
  */
 
 namespace app\index\model;
