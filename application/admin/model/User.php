@@ -25,11 +25,11 @@ class User extends Model
 
     protected function setPasswordAttr($value)
     {
-        return md5(md5($value));
+        return md5($value);
     }
 
     protected function setRepasswordAttr($value)
     {
-        return md5(md5($value));
+        return md5($value);
     }
 }

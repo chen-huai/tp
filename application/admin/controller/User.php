@@ -259,4 +259,16 @@ class User extends Base
             $this->error('删除用户失败');
         }*/
     }
+    public function test()
+    {
+        $data=Db::view('user','id,name,password,email')
+            ->view('user_rule','r_id','user_rule.u_id=user.id')
+            ->view('user_client','c_id','user_client.u_id=user.id')
+            ->order('id','asc')
+            ->select()            ;
+        //return Db:: getLastSql();
+        dump($data);
+        die;
+
+    }
 }
