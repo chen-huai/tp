@@ -31,7 +31,7 @@ class User extends Base
         return $this->fetch();*/
 
         //分页显示数据
-        $data = UserModel::all();
+        $data = UserModel::order('name','asc')->select();
         //dump($data);
         //$page = $data->render();
         $ruleData = Db::name('rule')->select();
@@ -107,14 +107,14 @@ class User extends Base
 
     public function add()
     {
-        $data = Db::name('rule')->select();
+        $data = Db::name('rule')->where(array('delete_time' => null))->select();
         $ruleData = array();
         foreach ($data as $k=>$d){
             $ruleData[$d['id']]=$d['name'];
         }
         $this->assign('ruleData',$ruleData);
 
-        $data = Db::name('client')->select();
+        $data = Db::name('client')->where(array('delete_time' => null))->select();
         $clientData = array();
         foreach ($data as $k=>$d){
             $clientData[$d['id']]=$d['name'];
@@ -130,14 +130,14 @@ class User extends Base
         $data = UserModel::get($id);
         $this->assign('data', $data);
         //获取rule列表关系
-        $data = Db::name('rule')->select();
+        $data = Db::name('rule')->where(array('delete_time' => null))->select();
         $ruleData = array();
         foreach ($data as $k=>$d){
             $ruleData[$d['id']]=$d['name'];
         }
         $this->assign('ruleData',$ruleData);
         //获取client列表关系
-        $data = Db::name('client')->select();
+        $data = Db::name('client')->where(array('delete_time' => null))->select();
         $clientData = array();
         foreach ($data as $k=>$d){
             $clientData[$d['id']]=$d['name'];
@@ -261,14 +261,20 @@ class User extends Base
     }
     public function test()
     {
-        $data=Db::view('user','id,name,password,email')
+        $data=Db::view('user','id,name,password,email,create_time')
             ->view('user_rule','r_id','user_rule.u_id=user.id')
             ->view('user_client','c_id','user_client.u_id=user.id')
-            ->order('id','asc')
-            ->select()            ;
+            ->view('rule','name as ruleName ','rule.id=user_rule.r_id')
+            ->view('client','name as clientName','client.id=user_client.c_id')
+            ->order('name','asc')
+            ->paginate(6);
         //return Db:: getLastSql();
-        dump($data);
-        die;
-
+        /*dump($data);
+        die;*/
+        //$data=Db::select(a.name,(select group_concat(b.role_name) from think_user_role b where b.u_id=a.id ) as roleNamefrom think_user a);
+        $page = $data->render();
+        $this->assign('data', $data);
+        $this->assign('page', $page);
+        return $this->fetch();
     }
 }

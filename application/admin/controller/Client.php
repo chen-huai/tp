@@ -24,7 +24,7 @@ class Client extends Base
         return $this->fetch();*/
 
         //分页显示数据
-        $data = UserModel::paginate(6);
+        $data = UserModel::order('id','asc')->paginate(6);
 
         $page = $data->render();
         $this->assign('data', $data);
